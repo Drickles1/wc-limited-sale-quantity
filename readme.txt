@@ -1,10 +1,10 @@
-=== Limited Sale Quantity for WooCommerce ===
+=== Vivid - Sale Quantity Limiter for WooCommerce ===
 Contributors: drickles1
 Tags: woocommerce, sale, discount, inventory, stock
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ Development happens on GitHub: https://github.com/Drickles1/wc-limited-sale-quan
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/limited-sale-quantity-for-woocommerce/`, or install directly through the WordPress plugins screen.
+1. Upload the plugin files to `/wp-content/plugins/vivid-sale-quantity-limiter/`, or install directly through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Make sure WooCommerce is installed and active.
 4. Edit any product and look for the new fields in the Pricing section of the General tab (or per-variation for variable products).
@@ -72,8 +72,10 @@ The fields are wp-admin/UI only for now. The underlying values are plain post me
 
 == Changelog ==
 
+= 1.2.1 =
+* Renamed to Vivid - Sale Quantity Limiter for WooCommerce ahead of public release.
+
 = 1.2.0 =
-* Renamed to Limited Sale Quantity for WooCommerce ahead of public release.
 * Added a graceful admin notice (instead of a fatal error) if WooCommerce isn't active.
 * Added the `Requires Plugins: woocommerce` header.
 
@@ -85,5 +87,5 @@ The fields are wp-admin/UI only for now. The underlying values are plain post me
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-Renamed from "WooCommerce Limited Sale Quantity" and now requires WooCommerce to be active (previously could fatal error if activated without it).
+= 1.2.1 =
+Renamed from "Limited Sale Quantity for WooCommerce" for wordpress.org's plugin naming guidelines. No functional changes.
