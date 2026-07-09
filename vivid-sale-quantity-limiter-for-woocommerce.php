@@ -3,7 +3,7 @@
  * Plugin Name: Vivid - Sale Quantity Limiter for WooCommerce
  * Plugin URI: https://github.com/Drickles1/wc-limited-sale-quantity
  * Description: Cap how many units of a product sell at the WooCommerce sale price. Set an allocation (e.g. 3), and once that many units have been sold — via a WooCommerce order OR an external stock sync (inventory tools, POS systems, etc.) — the sale price is automatically removed and the product reverts to regular price, even if more physical stock remains.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
@@ -124,6 +124,14 @@ add_action( 'woocommerce_product_options_pricing', function () {
 } );
 
 add_action( 'woocommerce_process_product_meta', function ( $post_id ) {
+    // woocommerce_process_product_meta only fires after
+    // WC_Admin_Meta_Boxes::save() has already verified this same nonce
+    // (see includes/admin/class-wc-admin-meta-boxes.php), but we verify it
+    // again explicitly here rather than relying on that upstream check.
+    if ( ! isset( $_POST['woocommerce_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['woocommerce_meta_nonce'] ) ), 'woocommerce_save_data' ) ) {
+        return;
+    }
+
     $product = wc_get_product( $post_id );
     if ( ! $product ) {
         return;
@@ -166,6 +174,14 @@ add_action( 'woocommerce_variation_options_pricing', function ( $loop, $variatio
 }, 10, 3 );
 
 add_action( 'woocommerce_save_product_variation', function ( $variation_id, $index ) {
+    // woocommerce_save_product_variation only fires after
+    // WC_AJAX::save_variations() has already verified this same nonce
+    // (see includes/class-wc-ajax.php), but we verify it again explicitly
+    // here rather than relying on that upstream check.
+    if ( ! isset( $_POST['security'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['security'] ) ), 'save-variations' ) ) {
+        return;
+    }
+
     $variation = wc_get_product( $variation_id );
     if ( ! $variation ) {
         return;

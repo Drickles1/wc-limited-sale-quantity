@@ -4,7 +4,7 @@ Tags: woocommerce, sale, discount, inventory, stock
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ The fields are wp-admin/UI only for now. The underlying values are plain post me
 1. The Sale Quantity Allocation field and "Start new limited-sale batch now" checkbox in the WooCommerce product Pricing tab.
 
 == Changelog ==
+
+= 1.2.4 =
+* Added explicit nonce verification in the allocation-saving handlers (defense-in-depth; these hooks already only fire after WooCommerce's own nonce checks pass, but the check is now also explicit and self-contained here).
 
 = 1.2.3 =
 * Text Domain now matches the wordpress.org-assigned slug, vivid-sale-quantity-limiter-for-woocommerce.
