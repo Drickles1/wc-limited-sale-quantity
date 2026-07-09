@@ -2,6 +2,8 @@
 
 Cap how many units of a product sell at the WooCommerce sale price — and have it revert to regular price automatically once that many units are gone, even if more physical stock remains.
 
+![Sale Quantity Allocation and Start new limited-sale batch now fields in the WooCommerce product Pricing tab](assets/screenshot-admin-fields.png)
+
 ## The problem this solves
 
 WooCommerce lets you set a sale price and (optionally) a schedule for when it starts/ends. But there's no built-in way to say: *"I have 20 of this in stock, but I only want to discount the first 3 sold — after that, back to full price."*
