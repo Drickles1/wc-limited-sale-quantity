@@ -1,5 +1,7 @@
 # WooCommerce Limited Sale Quantity
 
+[![Latest Release](https://img.shields.io/github/v/release/Drickles1/wc-limited-sale-quantity)](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest)
+
 Cap how many units of a product sell at the WooCommerce sale price — and have it revert to regular price automatically once that many units are gone, even if more physical stock remains.
 
 ![Sale Quantity Allocation and Start new limited-sale batch now fields in the WooCommerce product Pricing tab](assets/screenshot-admin-fields.png)
@@ -22,11 +24,22 @@ This plugin adds that missing piece: a **Sale Quantity Allocation** field. Set i
 
 ## Installation
 
-1. Download or clone this repo into `wp-content/plugins/wc-limited-sale-quantity/` (or zip it and upload via Plugins → Add New → Upload Plugin).
+### Option A: Download the ready-made zip (recommended)
+
+1. Go to the [latest release](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest) and download `gfv-sale-quantity-limit-X.Y.Z.zip`.
+2. In wp-admin, go to **Plugins → Add New → Upload Plugin**, choose the zip, and click **Install Now**.
+3. Activate **WooCommerce Limited Sale Quantity** from the Plugins screen.
+
+### Option B: Clone the repo
+
+1. Clone this repo into `wp-content/plugins/gfv-sale-quantity-limit/`.
 2. Activate **WooCommerce Limited Sale Quantity** from the Plugins screen.
-3. Edit any product, and you'll see two new fields in the **Pricing** section (General tab for simple products, per-variation for variable products):
-   - **Sale Quantity Allocation** — the number of units to sell at the sale price.
-   - **Start new limited-sale batch now** — a checkbox you must tick (and save) to actually arm/re-arm the allocation.
+
+### Either way
+
+Edit any product, and you'll see two new fields in the **Pricing** section (General tab for simple products, per-variation for variable products):
+- **Sale Quantity Allocation** — the number of units to sell at the sale price.
+- **Start new limited-sale batch now** — a checkbox you must tick (and save) to actually arm/re-arm the allocation.
 
 ## How to run a limited sale
 
