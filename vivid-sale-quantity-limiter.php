@@ -3,7 +3,7 @@
  * Plugin Name: Vivid - Sale Quantity Limiter for WooCommerce
  * Plugin URI: https://github.com/Drickles1/wc-limited-sale-quantity
  * Description: Cap how many units of a product sell at the WooCommerce sale price. Set an allocation (e.g. 3), and once that many units have been sold — via a WooCommerce order OR an external stock sync (inventory tools, POS systems, etc.) — the sale price is automatically removed and the product reverts to regular price, even if more physical stock remains.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce

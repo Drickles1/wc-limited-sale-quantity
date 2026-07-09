@@ -4,7 +4,7 @@ Tags: woocommerce, sale, discount, inventory, stock
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ The fields are wp-admin/UI only for now. The underlying values are plain post me
 1. The Sale Quantity Allocation field and "Start new limited-sale batch now" checkbox in the WooCommerce product Pricing tab.
 
 == Changelog ==
+
+= 1.2.2 =
+* Fixed the release zip not including readme.txt (required for wordpress.org submission).
 
 = 1.2.1 =
 * Renamed to Vivid - Sale Quantity Limiter for WooCommerce ahead of public release.
