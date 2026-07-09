@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify tag matches plugin header version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          HEADER_VERSION=$(grep -m1 "^ \* Version:" gfv-sale-quantity-limit.php | sed 's/.*Version:[[:space:]]*//')
+          if [ "$VERSION" != "$HEADER_VERSION" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match plugin header version ${HEADER_VERSION}"
+            exit 1
+          fi
+
+      - name: Build plugin zip
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p build/gfv-sale-quantity-limit
+          cp gfv-sale-quantity-limit.php build/gfv-sale-quantity-limit/
+          cd build
+          zip -r "gfv-sale-quantity-limit-${VERSION}.zip" gfv-sale-quantity-limit
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          gh release create "${GITHUB_REF_NAME}" \
+            "build/gfv-sale-quantity-limit-${VERSION}.zip" \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes
