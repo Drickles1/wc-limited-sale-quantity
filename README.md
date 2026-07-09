@@ -1,4 +1,4 @@
-# WooCommerce Limited Sale Quantity
+# Limited Sale Quantity for WooCommerce
 
 [![Latest Release](https://img.shields.io/github/v/release/Drickles1/wc-limited-sale-quantity)](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest)
 
@@ -26,14 +26,14 @@ This plugin adds that missing piece: a **Sale Quantity Allocation** field. Set i
 
 ### Option A: Download the ready-made zip (recommended)
 
-1. Go to the [latest release](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest) and download `gfv-sale-quantity-limit-X.Y.Z.zip`.
+1. Go to the [latest release](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest) and download `limited-sale-quantity-for-woocommerce-X.Y.Z.zip`.
 2. In wp-admin, go to **Plugins → Add New → Upload Plugin**, choose the zip, and click **Install Now**.
-3. Activate **WooCommerce Limited Sale Quantity** from the Plugins screen.
+3. Activate **Limited Sale Quantity for WooCommerce** from the Plugins screen.
 
 ### Option B: Clone the repo
 
-1. Clone this repo into `wp-content/plugins/gfv-sale-quantity-limit/`.
-2. Activate **WooCommerce Limited Sale Quantity** from the Plugins screen.
+1. Clone this repo into `wp-content/plugins/limited-sale-quantity-for-woocommerce/`.
+2. Activate **Limited Sale Quantity for WooCommerce** from the Plugins screen.
 
 ### Either way
 
@@ -69,7 +69,7 @@ This is deliberate. The allocation field is pre-filled with its last value, so i
 ## Known limitations
 
 - The "Only N left" badge is proven for simple products. On variable products, WooCommerce swaps variation data via AJAX/JS without re-running this PHP hook per variation, so the badge reflects whatever variation WooCommerce's own template loop currently has in scope rather than updating live as a shopper picks a different variation. The admin-side allocation/arming logic fully supports variations regardless.
-- No REST API exposure for the allocation fields yet (they're wp-admin/UI only). If you need to set allocations programmatically, they're plain post meta (`_gfv_sale_qty_allocation`, etc.) and can be read/written directly.
+- No REST API exposure for the allocation fields yet (they're wp-admin/UI only). If you need to set allocations programmatically, they're plain post meta (`_lsqw_sale_qty_allocation`, etc.) and can be read/written directly.
 
 ## License
 
