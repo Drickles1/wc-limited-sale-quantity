@@ -18,7 +18,7 @@ jobs:
       - name: Verify tag matches plugin header version and readme.txt stable tag
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          HEADER_VERSION=$(grep -m1 "^ \* Version:" vivid-sale-quantity-limiter.php | sed 's/.*Version:[[:space:]]*//')
+          HEADER_VERSION=$(grep -m1 "^ \* Version:" vivid-sale-quantity-limiter-for-woocommerce.php | sed 's/.*Version:[[:space:]]*//')
           if [ "$VERSION" != "$HEADER_VERSION" ]; then
             echo "::error::Tag ${GITHUB_REF_NAME} does not match plugin header version ${HEADER_VERSION}"
             exit 1
@@ -32,10 +32,10 @@ jobs:
       - name: Build plugin zip
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          mkdir -p build/vivid-sale-quantity-limiter
-          cp vivid-sale-quantity-limiter.php readme.txt build/vivid-sale-quantity-limiter/
+          mkdir -p build/vivid-sale-quantity-limiter-for-woocommerce
+          cp vivid-sale-quantity-limiter-for-woocommerce.php readme.txt build/vivid-sale-quantity-limiter-for-woocommerce/
           cd build
-          zip -r "vivid-sale-quantity-limiter-${VERSION}.zip" vivid-sale-quantity-limiter
+          zip -r "vivid-sale-quantity-limiter-for-woocommerce-${VERSION}.zip" vivid-sale-quantity-limiter-for-woocommerce
 
       - name: Create GitHub Release
         env:
@@ -43,6 +43,6 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           gh release create "${GITHUB_REF_NAME}" \
-            "build/vivid-sale-quantity-limiter-${VERSION}.zip" \
+            "build/vivid-sale-quantity-limiter-for-woocommerce-${VERSION}.zip" \
             --title "${GITHUB_REF_NAME}" \
             --generate-notes

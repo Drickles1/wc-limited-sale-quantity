@@ -26,13 +26,13 @@ This plugin adds that missing piece: a **Sale Quantity Allocation** field. Set i
 
 ### Option A: Download the ready-made zip (recommended)
 
-1. Go to the [latest release](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest) and download `vivid-sale-quantity-limiter-X.Y.Z.zip`.
+1. Go to the [latest release](https://github.com/Drickles1/wc-limited-sale-quantity/releases/latest) and download `vivid-sale-quantity-limiter-for-woocommerce-X.Y.Z.zip`.
 2. In wp-admin, go to **Plugins → Add New → Upload Plugin**, choose the zip, and click **Install Now**.
 3. Activate **Vivid - Sale Quantity Limiter for WooCommerce** from the Plugins screen.
 
 ### Option B: Clone the repo
 
-1. Clone this repo into `wp-content/plugins/vivid-sale-quantity-limiter/`.
+1. Clone this repo into `wp-content/plugins/vivid-sale-quantity-limiter-for-woocommerce/`.
 2. Activate **Vivid - Sale Quantity Limiter for WooCommerce** from the Plugins screen.
 
 ### Either way

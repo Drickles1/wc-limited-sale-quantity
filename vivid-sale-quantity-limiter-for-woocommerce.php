@@ -3,7 +3,7 @@
  * Plugin Name: Vivid - Sale Quantity Limiter for WooCommerce
  * Plugin URI: https://github.com/Drickles1/wc-limited-sale-quantity
  * Description: Cap how many units of a product sell at the WooCommerce sale price. Set an allocation (e.g. 3), and once that many units have been sold — via a WooCommerce order OR an external stock sync (inventory tools, POS systems, etc.) — the sale price is automatically removed and the product reverts to regular price, even if more physical stock remains.
- * Version: 1.2.2
+ * Version: 1.2.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
@@ -12,7 +12,7 @@
  * Author URI: https://github.com/Drickles1
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: vivid-sale-quantity-limiter
+ * Text Domain: vivid-sale-quantity-limiter-for-woocommerce
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function lsqw_woocommerce_missing_notice() {
     echo '<div class="notice notice-error"><p>'
-        . esc_html__( 'Vivid - Sale Quantity Limiter for WooCommerce requires WooCommerce to be installed and active.', 'vivid-sale-quantity-limiter' )
+        . esc_html__( 'Vivid - Sale Quantity Limiter for WooCommerce requires WooCommerce to be installed and active.', 'vivid-sale-quantity-limiter-for-woocommerce' )
         . '</p></div>';
 }
 
@@ -101,8 +101,8 @@ add_action( 'woocommerce_product_options_pricing', function () {
 
     woocommerce_wp_text_input( array(
         'id'                => LSQW_ALLOCATION_META,
-        'label'             => __( 'Sale Quantity Allocation', 'vivid-sale-quantity-limiter' ),
-        'description'       => __( 'Max units to sell at the sale price above. Once that many units sell (by order or stock sync), the sale price is auto-removed, even if stock remains. Leave blank/0 to disable.', 'vivid-sale-quantity-limiter' ),
+        'label'             => __( 'Sale Quantity Allocation', 'vivid-sale-quantity-limiter-for-woocommerce' ),
+        'description'       => __( 'Max units to sell at the sale price above. Once that many units sell (by order or stock sync), the sale price is auto-removed, even if stock remains. Leave blank/0 to disable.', 'vivid-sale-quantity-limiter-for-woocommerce' ),
         'desc_tip'          => true,
         'type'              => 'number',
         'custom_attributes' => array( 'step' => '1', 'min' => '0' ),
@@ -111,13 +111,13 @@ add_action( 'woocommerce_product_options_pricing', function () {
 
     woocommerce_wp_checkbox( array(
         'id'          => LSQW_REARM_FIELD,
-        'label'       => __( 'Start new limited-sale batch now', 'vivid-sale-quantity-limiter' ),
-        'description' => __( 'Check this AND save to (re)arm the allocation above. Required every time you want to start or restart a batch — leaving it unchecked on a routine save never touches the counter, even if this same allocation number was already used up before.', 'vivid-sale-quantity-limiter' ),
+        'label'       => __( 'Start new limited-sale batch now', 'vivid-sale-quantity-limiter-for-woocommerce' ),
+        'description' => __( 'Check this AND save to (re)arm the allocation above. Required every time you want to start or restart a batch — leaving it unchecked on a routine save never touches the counter, even if this same allocation number was already used up before.', 'vivid-sale-quantity-limiter-for-woocommerce' ),
     ) );
 
     if ( '' !== $remaining && null !== $remaining ) {
         echo '<p class="form-field lsqw-remaining-display">'
-            . '<label>' . esc_html__( 'Remaining at Sale Price', 'vivid-sale-quantity-limiter' ) . '</label>'
+            . '<label>' . esc_html__( 'Remaining at Sale Price', 'vivid-sale-quantity-limiter-for-woocommerce' ) . '</label>'
             . '<span>' . esc_html( $remaining ) . '</span>'
             . '</p>';
     }
@@ -147,7 +147,7 @@ add_action( 'woocommerce_variation_options_pricing', function ( $loop, $variatio
     echo '<div class="form-row form-row-full lsqw-variation-row">';
     woocommerce_wp_text_input( array(
         'id'                => LSQW_ALLOCATION_META . '[' . $loop . ']',
-        'label'             => __( 'Sale Qty Allocation', 'vivid-sale-quantity-limiter' ),
+        'label'             => __( 'Sale Qty Allocation', 'vivid-sale-quantity-limiter-for-woocommerce' ),
         'wrapper_class'     => 'form-row form-row-full',
         'type'              => 'number',
         'custom_attributes' => array( 'step' => '1', 'min' => '0' ),
@@ -155,12 +155,12 @@ add_action( 'woocommerce_variation_options_pricing', function ( $loop, $variatio
     ) );
     woocommerce_wp_checkbox( array(
         'id'            => LSQW_REARM_FIELD . '[' . $loop . ']',
-        'label'         => __( 'Start new batch now', 'vivid-sale-quantity-limiter' ),
+        'label'         => __( 'Start new batch now', 'vivid-sale-quantity-limiter-for-woocommerce' ),
         'wrapper_class' => 'form-row form-row-full',
-        'description'   => __( 'Check to (re)arm the allocation above.', 'vivid-sale-quantity-limiter' ),
+        'description'   => __( 'Check to (re)arm the allocation above.', 'vivid-sale-quantity-limiter-for-woocommerce' ),
     ) );
     if ( '' !== $remaining && null !== $remaining ) {
-        echo '<p class="lsqw-remaining-display">' . esc_html__( 'Remaining at sale price:', 'vivid-sale-quantity-limiter' ) . ' ' . esc_html( $remaining ) . '</p>';
+        echo '<p class="lsqw-remaining-display">' . esc_html__( 'Remaining at sale price:', 'vivid-sale-quantity-limiter-for-woocommerce' ) . ' ' . esc_html( $remaining ) . '</p>';
     }
     echo '</div>';
 }, 10, 3 );
@@ -262,7 +262,7 @@ function lsqw_render_badge() {
         '<p class="lsqw-sale-qty-badge">%s</p>',
         esc_html( sprintf(
             /* translators: %d: number of units remaining at the sale price */
-            _n( 'Only %d left at this price!', 'Only %d left at this price!', $remaining, 'vivid-sale-quantity-limiter' ),
+            _n( 'Only %d left at this price!', 'Only %d left at this price!', $remaining, 'vivid-sale-quantity-limiter-for-woocommerce' ),
             $remaining
         ) )
     );

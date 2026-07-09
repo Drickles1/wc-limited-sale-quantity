@@ -4,7 +4,7 @@ Tags: woocommerce, sale, discount, inventory, stock
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ Development happens on GitHub: https://github.com/Drickles1/wc-limited-sale-quan
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/vivid-sale-quantity-limiter/`, or install directly through the WordPress plugins screen.
+1. Upload the plugin files to `/wp-content/plugins/vivid-sale-quantity-limiter-for-woocommerce/`, or install directly through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Make sure WooCommerce is installed and active.
 4. Edit any product and look for the new fields in the Pricing section of the General tab (or per-variation for variable products).
@@ -71,6 +71,9 @@ The fields are wp-admin/UI only for now. The underlying values are plain post me
 1. The Sale Quantity Allocation field and "Start new limited-sale batch now" checkbox in the WooCommerce product Pricing tab.
 
 == Changelog ==
+
+= 1.2.3 =
+* Text Domain now matches the wordpress.org-assigned slug, vivid-sale-quantity-limiter-for-woocommerce.
 
 = 1.2.2 =
 * Fixed the release zip not including readme.txt (required for wordpress.org submission).
