@@ -1,5 +1,5 @@
 === Vivid - Sale Quantity Limiter for WooCommerce ===
-Contributors: drickles1
+Contributors: drickles
 Tags: woocommerce, sale, discount, inventory, stock
 Requires at least: 6.0
 Tested up to: 7.0
